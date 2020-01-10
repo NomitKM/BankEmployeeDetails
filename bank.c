@@ -30,15 +30,21 @@ void display(struct bank e)
 void main()
   {
     int choice,i=-1;
-    struct bank arr[5];
+    struct bank arr[2];
     while(1)
       {
         printf("\n\n");
         printf("\t\t\t\t\tWelcome to the XYZ bank");
+        fflush(stdin);
         getchar();
         printf("\n1. Add Employee Details\n2. Display Employee Details\n3. Exit\n");
         scanf("%d",&choice);
         if(choice==1)i++;
+        if(i>=2 && choice==1)
+          {
+            printf("\nMemory Full\n\n");
+            choice=4;
+          }
         switch(choice)
           {
             case 1:  arr[i]=input(); break;
@@ -46,6 +52,9 @@ void main()
                           {
                             display(arr[j]);
                           }
+                            fflush(stdin);
+                            getchar();
+                            system("CLS");
                             break;
             case 3:  exit(0);
             default: printf("Invalid Option");
